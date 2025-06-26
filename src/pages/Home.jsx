@@ -14,7 +14,7 @@ function Index() {
 
 
  useEffect(() => {
-    axios.get("../public/data.json")
+    axios.get("/data.json")
       .then((res) => {
         console.log(res);
         setCountry(res.data);

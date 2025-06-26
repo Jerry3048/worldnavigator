@@ -16,7 +16,7 @@ function Detail() {
 
 
      useEffect(() => {
-        axios.get(`../public/data.json`)
+        axios.get(`/data.json`)
           .then((res) => {
             const decodeName = decodeURIComponent(id)
             console.log("name"+decodeName)
