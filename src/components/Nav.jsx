@@ -9,7 +9,7 @@ function Nav() {
             mutations.forEach((mutation) => {
                 if (mutation.attributeName === "class") {
                     const isDark = document.documentElement.classList.contains('dark');
-                    setTheme(isDark ? "Light Mode" : "Dark Mode");
+                    setTheme(isDark ? "Dark Mode" : "Light Mode");
                 }
             });
         });
