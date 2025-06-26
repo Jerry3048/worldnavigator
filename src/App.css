@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import  url("https://fonts.google.com/specimen/Nunito+Sans")
+
+
+@font-face {
+  font-family: 'Nunito Sans';
+  src: url("https://fonts.google.com/specimen/Nunito+Sans");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme{
+    --font-Nunito: "Nunito Sans";
+}
