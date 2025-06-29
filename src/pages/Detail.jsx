@@ -71,7 +71,7 @@ function Detail() {
             </button>
           {loading ? (
             <div className="flex justify-center items-center h-40 mt-100">
-              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-lime-500"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-300 dark:border-blue-800"></div>
             </div>
           ) : error ? (
             <div className="text-center text-red-500 mt-[200px]">{error}</div>  
