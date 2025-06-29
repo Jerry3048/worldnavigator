@@ -12,6 +12,8 @@ function Detail() {
   const {id}= useParams()
     const [CountryData, setCountryData] = useState(null);
     const [allCountries, setAllCountries] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
 
@@ -26,19 +28,23 @@ function Detail() {
 
               setCountryData(SelectedCard);
               setAllCountries(all);
-    
           })
-          .catch((err) => {
-            console.error('Error' + err);
+
+           .catch((err) => {
+            setError(err);
+          })
+          .finally(() => {
+            setLoading(false);
           });
-      }, [id]);
+
+          }, [id]);
 
         if (!CountryData) {
           return <div className="text-center text-lg p-4">Loading...</div>;
         }
 
       const BorderCountries = CountryData.borders
-  ? CountryData.borders.map((code, index) => {
+ ? CountryData.borders.map((code, index) => {
       const neighbor = allCountries.find(c => c.alpha3Code === code);
       return (
         <button
@@ -63,7 +69,13 @@ function Detail() {
                 <FaArrowLeft />
                 Back
             </button>
-
+          {loading ? (
+            <div className="flex justify-center items-center h-40 mt-100">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-lime-500"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center text-red-500 mt-[200px]">{error}</div>  
+          ) : (
          <div> 
           <Detailedcard
               Flags={CountryData.flags}
@@ -80,6 +92,7 @@ function Detail() {
               BorderCountries={BorderCountries}
             />
         </div>
+        )}
         </div>
   </div>
   )

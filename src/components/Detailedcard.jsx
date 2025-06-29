@@ -26,9 +26,9 @@ function Detailedcard({ Flags, Country, Population, Region, Capital, id, SubRegi
                         
                 </div>
            </div>
-           <div className='lg:flex space-x-3 space-y-4'>
-            <p className='dark:text-gray-50 text-black'>Boarder Countries:</p>
-                <div className='flex gap-4'>
+           <div className=' space-x-3 space-y-4'>
+            <p className='dark:text-gray-50 text-black font-bold'>Boarder Countries:</p>
+                <div className='grid grid-cols-3 gap-4'>
                     {BorderCountries}
                 </div>
            </div>
