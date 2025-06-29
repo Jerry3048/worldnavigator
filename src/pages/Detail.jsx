@@ -39,9 +39,9 @@ function Detail() {
 
           }, [id]);
 
-        // if (!CountryData) {
-        //   return <div className="text-center text-lg p-4">Loading...</div>;
-        // }
+        if (!CountryData) {
+          return <div className="text-center text-lg p-4">Loading...</div>;
+        }
 
       const BorderCountries = CountryData.borders
  ? CountryData.borders.map((code, index) => {
