@@ -39,12 +39,9 @@ function Detail() {
 
           }, [id]);
 
-        if (!CountryData) {
-          return <div className="text-center text-lg p-4">Loading...</div>;
-        }
 
       const BorderCountries = CountryData.borders
- ? CountryData.borders.map((code, index) => {
+     ? CountryData.borders.map((code, index) => {
       const neighbor = allCountries.find(c => c.alpha3Code === code);
       return (
         <button
