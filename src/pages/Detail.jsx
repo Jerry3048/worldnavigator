@@ -41,7 +41,7 @@ function Detail() {
 
 
       const BorderCountries = CountryData.borders
-     ? CountryData.borders.map((code, index) => {
+ ? CountryData.borders.map((code, index) => {
       const neighbor = allCountries.find(c => c.alpha3Code === code);
       return (
         <button
