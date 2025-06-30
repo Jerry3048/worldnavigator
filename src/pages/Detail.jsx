@@ -94,7 +94,7 @@ function Detail() {
               BorderCountries={BorderCountries}
             />
           ) : (
-            <div className="text-center mt-20">Country not found</div>
+            <div className="text-center mt-20">No country data found.</div>
           )}
         </div>
   </div>
