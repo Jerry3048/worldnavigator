@@ -39,12 +39,7 @@ function Detail() {
 
           }, [id]);
 
-        if (!CountryData) {
-          return <div className="text-center text-lg p-4">Loading...</div>;
-        }
-
-      const BorderCountries = CountryData.borders
- ? CountryData.borders.map((code, index) => {
+      const BorderCountries = CountryData?.borders?.map((code, index) => {
       const neighbor = allCountries.find(c => c.alpha3Code === code);
       return (
         <button
@@ -54,8 +49,7 @@ function Detail() {
           {neighbor?.name || code}
         </button>
       );
-    })
-  : <span>Null</span>;
+    });
 
 
 
@@ -69,30 +63,40 @@ function Detail() {
                 <FaArrowLeft />
                 Back
             </button>
-          {loading ? (
-            <div className="flex justify-center items-center h-40 mt-100">
+
+
+            {loading ? (
+            <div className="flex justify-center items-center h-40 mt-20">
               <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gray-300 dark:border-blue-800"></div>
             </div>
           ) : error ? (
-            <div className="text-center text-red-500 mt-[200px]">{error}</div>  
-          ) : (
-         <div> 
-          <Detailedcard
+            <div className="text-center text-red-500 mt-[200px]">{error.message}</div>  
+          ) : CountryData ? (
+            <Detailedcard
               Flags={CountryData.flags}
               Country={CountryData.name}
               Population={CountryData.population}
               Region={CountryData.region}
               Capital={CountryData.capital}
               id={CountryData.name}
-              SubRegion= {CountryData.subregion}
-              NativeName= {CountryData.nativeName}
+              SubRegion={CountryData.subregion}
+              NativeName={CountryData.nativeName}
               TopLevelDomain={CountryData.topLevelDomain}
-              Currencies={CountryData.currencies ? CountryData.currencies.map(c => c.name).join(', '):"Null"}
-              Languages={ CountryData.languages ? CountryData.languages.map(c => c.name).join(', '):'Null'}
+              Currencies={
+                CountryData.currencies
+                  ? CountryData.currencies.map(c => c.name).join(', ')
+                  : "Null"
+              }
+              Languages={
+                CountryData.languages
+                  ? CountryData.languages.map(c => c.name).join(', ')
+                  : "Null"
+              }
               BorderCountries={BorderCountries}
             />
-        </div>
-        )}
+          ) : (
+            <div className="text-center mt-20">Country not found</div>
+          )}
         </div>
   </div>
   )
