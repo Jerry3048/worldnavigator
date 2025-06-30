@@ -39,7 +39,8 @@ function Detail() {
 
           }, [id]);
 
-      const BorderCountries = CountryData?.borders?.map((code, index) => {
+      const BorderCountries = CountryData?.borders && CountryData.borders.length > 0
+  ? CountryData.borders.map((code, index) => {
       const neighbor = allCountries.find(c => c.alpha3Code === code);
       return (
         <button
@@ -49,10 +50,8 @@ function Detail() {
           {neighbor?.name || code}
         </button>
       );
-    });
-
-
-
+    })
+  : <span>NULL</span>;
 
   return (
     <div className="text-gray-950 dark:text-white bg-gray-100 bg: dark:bg-blue-950 transition-all duration-100 ease-in min-h-screen text-Nunito space-y-10">
